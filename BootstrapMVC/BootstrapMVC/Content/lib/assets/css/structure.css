@@ -739,7 +739,7 @@ code { color: #e7515a; }
     user-select: none;
     -webkit-user-drag: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    top: 106px;
+    top: 43px;
     left: 16px;
 }
 .sidebar-theme { background: transparent; }
@@ -789,7 +789,7 @@ code { color: #e7515a; }
     overflow: hidden;
 }
 #sidebar ul.menu-categories.ps {
-    height: calc(100vh - 107px)!important;
+    height: calc(100vh - 43px)!important;
     margin-right: 0;
     padding-right: 22px;
     border-right: 1px solid #e0e6ed;

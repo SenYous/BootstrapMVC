@@ -1,0 +1,82 @@
+﻿@model BootstrapMVC.Controllers.HomeController.Menu
+@{
+    ViewBag.Title = "Default";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<script type="text/javascript">
+    $(function () {
+        $(document).on("click", ".menu_a", function () {
+            var url = $(this).attr('name');
+            $('#J_iframe').attr("src", url);
+
+            $("#accordionExample li.active").removeClass();//移除选中样式
+            $(this).parent("li").addClass("active");//添加选中样式
+            
+            $("#nowTitle").html($(this).attr('title')); //修改标题
+            $("#nowMenu").html($(this).attr('menu')); //修改菜单
+
+        });
+    });
+
+</script>
+<style type="text/css">
+    .divMinHeigh {
+        min-height: calc(100vh - 115px) !important;
+    }
+</style>
+<!--  BEGIN MAIN CONTAINER  -->
+<div class="main-container" id="container">
+
+    <div class="overlay"></div>
+    <div class="search-overlay"></div>
+
+    <!--  BEGIN SIDEBAR  -->
+    <div class="sidebar-wrapper sidebar-theme">
+
+        <nav id="sidebar">
+            <div class="shadow-bottom"></div>
+            <ul class="list-unstyled menu-categories" id="accordionExample">
+                @Html.Raw(ViewData["menus"])
+            </ul>
+            <!-- <div class="shadow-bottom"></div> -->
+
+        </nav>
+
+    </div>
+    <!--  END SIDEBAR  -->
+    <!--  BEGIN CONTENT AREA  -->
+    <div id="content" class="main-content">
+
+        <!--  BEGIN NAVBAR  -->
+        <div class="sub-header-container">
+            <header class="header navbar navbar-expand-sm">
+                <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></a>
+
+                <ul class="navbar-nav flex-row">
+                    <li>
+                        <div class="page-header">
+
+                            <nav class="breadcrumb-one" aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><span id="nowMenu">@Html.Raw(ViewData["letTitle"])</span></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><span id="nowTitle">@Model.Title</span></li>
+                                </ol>
+                            </nav>
+
+                        </div>
+                    </li>
+                </ul>
+            </header>
+        </div>
+        <!--  END NAVBAR  -->
+
+        <div>
+            <iframe class="divMinHeigh" id="J_iframe" width="100%" src="@Model.URL" frameborder="0">
+            </iframe>
+        </div>
+
+    </div>
+    <!--  END CONTENT AREA  -->
+
+</div>
+<!-- END MAIN CONTAINER -->
